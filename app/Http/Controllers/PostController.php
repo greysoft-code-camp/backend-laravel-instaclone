@@ -12,15 +12,11 @@ use Exception;
 
 class PostController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // todo - fetch all posts from firebase in desc
-
-        $posts = Post::all();
-        
         return response()->json([
             "message" => "success",
-            "posts" => $posts
+            "posts" => Post::orderBy('created_at', 'Desc')->get(),
         ], 200);
     }
 
