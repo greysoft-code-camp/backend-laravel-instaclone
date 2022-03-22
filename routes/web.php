@@ -17,4 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/artisan/{command}/{params?}', function ($command, $params = null) {
+    Artisan::call($command, $params ? explode(',', $params) : []);
+});
+
 
